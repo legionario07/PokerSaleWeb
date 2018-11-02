@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<form class="form-horizontal" method="POST" action="/jogadores">
+	<div class="panel-body">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th class="text-center col-md-2">ID</th>
+					<th class="text-center col-md-4">Nome</th>
+					<th class="text-center col-md-3">Perfil</th>
+					<th class="text-center col-md-2">Pontuação</th>
+					<th class="text-center col-md-1">Último Acesso</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="jogador : ${jogadores}">
+					<td class="text-center" th:text="${jogador.id}"></td>
+					<td class="text-center" th:text="${jogador.nome}"></td>
+					<td class="text-center"
+						th:text="${jogador.perfil.id}"></td>
+					<td class="text-center" th:text="${jogador.pontuacao.id}"></td>
+					<td class="text-center" th:text="${jogador.ultimoAcesso}"></td>
+				</tr>
+				<tr>
+					<td class="text-center" colspan="6"
+						th:if="${#lists.isEmpty(jogadores)}">Nenhuma Solicitação
+						Adicionada.</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="form-group">
+			<div class="col-sm-offset-5 col-sm-10">
+				<button type="submit" class="btn btn-primary">SALVAR</button>
+			</div>
+		</div>
+	</div>
+</form>
+
+</html>
